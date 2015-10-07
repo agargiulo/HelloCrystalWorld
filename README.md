@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/agargiulo/HelloCrystalLib.svg?branch=master)](https://travis-ci.org/agargiulo/HelloCrystalLib)
+[![Build Status](https://travis-ci.org/agargiulo/HelloCrystalWorld.svg?branch=master)](https://travis-ci.org/agargiulo/HelloCrystalWorld)
 # HelloCrystalWorld
 
 TODO: Write a description here
