@@ -19,7 +19,10 @@ module HelloCrystalWorld
     puts "Attempting to contact the server at #{host}:#{port}".colorize(:light_yellow)
     10.times do |i|
       client.puts "#{i}".colorize(:red)
-      puts "server response #{client.gets}".colorize(:green)
+      ser_response = client.gets
+      if ser_response && ser_response.chop
+        puts "server response '#{ser_response.chop}'".colorize(:green)
+      end
       sleep 0.5
     end
   end
