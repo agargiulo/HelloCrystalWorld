@@ -1,4 +1,5 @@
 require "socket"
+require "colorize"
 
 module HelloCrystalWorld
   class Server
@@ -12,14 +13,14 @@ module HelloCrystalWorld
 
     def process(client)
       client_addr = "#{client.peeraddr.ip_address}:#{client.peeraddr.ip_port}"
-      puts "#{client_addr} connected"
+      puts "#{client_addr} connected".colorize(:magenta)
       while msg = client.read_line
-        puts "#{client_addr} msg '#{msg.chop}'"
+        puts "#{client_addr} msg '#{msg.chop}'".colorize(:light_cyan)
         client << msg
       end
 
     rescue IO::EOFError
-      puts "#{client_addr} dissconnected"
+      puts "#{client_addr} dissconnected".colorize(:magenta)
 
     ensure
       client.close

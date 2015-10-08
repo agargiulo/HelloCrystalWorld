@@ -1,2 +1,2 @@
 require "spec"
-require "../src/HelloCrystalWorld"
+require "../src/HelloCrystalWorld/*"
