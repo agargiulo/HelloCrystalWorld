@@ -24,13 +24,10 @@ Content-Length: #{resp.size}\r
 Content-Type: text/html\r"
 
       client << "#{header}\r\n\r\n#{resp}\r\n"
-
     rescue IO::EOFError
       puts "#{client_addr} dissconnected".colorize(:magenta)
-
     ensure
       client.close
     end
   end
-
 end
