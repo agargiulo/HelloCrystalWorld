@@ -15,16 +15,11 @@ module HelloCrystalWorld
   def self.run_client(host, port)
     puts "This is version #{VERSION} -- CLIENT --".colorize(:yellow)
 
-    client = Client.new(host, port)
-    puts "Attempting to contact the server at #{host}:#{port}".colorize(:light_yellow)
-    10.times do |i|
-      client.puts "#{i}".colorize(:red)
-      ser_response = client.gets
-      if ser_response && ser_response.chop
-        puts "server response '#{ser_response.chop}'".colorize(:green)
-      end
-      sleep 0.5
-    end
+    client = HTTPClient.new(host, port)
+    response = client.get
+    header, body = response.split /\r\n\r\n/
+    puts header
+    puts body
   end
 end
 

@@ -14,11 +14,10 @@ module HelloCrystalWorld
     def process(client)
       client_addr = "#{client.peeraddr.ip_address}:#{client.peeraddr.ip_port}"
       puts "#{client_addr} connected".colorize(:magenta)
-      resp = ""
+      resp = "Hello, World!\n"
       while resq = client.read_line
-        break if resq.chop == ""
-        puts "#{client_addr} msg '#{resq.chop}'".colorize(:light_cyan)
-        resp += resq
+        break if resq.chomp == ""
+        puts "#{client_addr} msg '#{resq.chomp}'".colorize(:light_cyan)
       end
       header = "HTTP/1.1 200 OK
 Content-Length: #{resp.size}\r

@@ -14,4 +14,24 @@ module HelloCrystalWorld
       @socket.gets
     end
   end
+
+  class HTTPClient
+    def initialize(@host, @port)
+      @client = Client.new(@host, @port)
+    end
+
+    def get
+      localhost = "localhost"
+      request = "GET / HTTP/1.1
+Host: #{localhost}\r
+User-Agent: HelloCrystalWorld\r
+Accept: text/html\r\n\r\n"
+      @client.puts(request)
+      response = ""
+      while msg = @client.gets
+        response += msg
+      end
+      response
+    end
+  end
 end
