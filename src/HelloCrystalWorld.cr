@@ -12,11 +12,24 @@ module HelloCrystalWorld
     server.listen
   end
 
-  def self.run_client(host, port)
+  def self.run_client(uri : String)
     puts "This is version #{VERSION} -- CLIENT --".colorize(:yellow)
 
+    path = "/"
+
+    if uri.includes?('/')
+      host, path = uri.split(path)
+    else
+      host = uri
+    end
+
+    if host.includes?(':')
+      host, port = host.split(":")
+    else
+      port = 80
+    end
     client = HTTPClient.new(host, port)
-    response = client.get
+    response = client.get path
     header, body = response.split /\r\n\r\n/
     puts header
     puts body
@@ -29,6 +42,5 @@ if flag == "--server" || flag == "-s"
   host, port = ARGV[1].split(":")
   HelloCrystalWorld.run_server(host, port.to_i)
 else
-  host, port = ARGV.first.split(":")
-  HelloCrystalWorld.run_client(host, port.to_i)
+  HelloCrystalWorld.run_client(ARGV.first)
 end

@@ -20,9 +20,9 @@ module HelloCrystalWorld
       @client = Client.new(@host, @port)
     end
 
-    def get
+    def get(path : String)
       localhost = "localhost"
-      request = "GET / HTTP/1.1
+      request = "GET /#{path} HTTP/1.1
 Host: #{localhost}\r
 User-Agent: HelloCrystalWorld\r
 Accept: text/html\r\n\r\n"
