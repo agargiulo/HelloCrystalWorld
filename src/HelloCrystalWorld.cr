@@ -29,10 +29,7 @@ module HelloCrystalWorld
       port = 80
     end
     client = HTTPClient.new(host, port)
-    response = client.get path
-    header, body = response.split /\r\n\r\n/
-    puts header
-    puts body
+    puts client.get path
   end
 end
 
